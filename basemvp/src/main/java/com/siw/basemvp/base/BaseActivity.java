@@ -23,7 +23,6 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
-        CommonUtils.init(BaseActivity.this.getApplicationContext());
         mPresenter = ReflexUtil.getClazz(this, 0);
         mModel = ReflexUtil.getClazz(this, 1);
         if (this instanceof BaseView) {
