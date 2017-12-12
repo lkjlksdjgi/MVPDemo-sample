@@ -12,7 +12,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by hpw on 16/11/2.
+ * Created by 童思伟 on 2017/12/11.
+ *
  */
 public class CacheInterceptor implements Interceptor {
     @Override

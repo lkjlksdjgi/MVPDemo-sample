@@ -7,7 +7,8 @@ import android.content.Context;
 import java.util.Stack;
 
 /**
- * Created by hpw on 16/10/28.
+ * Created by 童思伟 on 2017/12/11.
+ *
  */
 
 public class AppManager {

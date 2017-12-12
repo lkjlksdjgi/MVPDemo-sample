@@ -7,10 +7,11 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-/**
- * Created by hpw on 16/11/2.
- */
 
+/**
+ * Created by 童思伟 on 2017/12/11.
+ *
+ */
 public class RxUtil {
 
     /**

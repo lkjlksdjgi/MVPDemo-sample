@@ -17,8 +17,8 @@ import rx.subjects.PublishSubject;
 import rx.subjects.Subject;
 
 /**
- * 用RxJava实现的EventBus
- * Created by hpw on 16/10/27.
+ * Created by 童思伟 on 2017/12/11.
+ *
  */
 
 public class RxBus {

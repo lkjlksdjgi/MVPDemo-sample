@@ -3,7 +3,8 @@ package com.siw.basemvp.utils;
 import java.lang.reflect.ParameterizedType;
 
 /**
- * Created by hpw on 16/10/28.
+ * Created by 童思伟 on 2017/12/11.
+ *
  */
 
 public class ReflexUtil {

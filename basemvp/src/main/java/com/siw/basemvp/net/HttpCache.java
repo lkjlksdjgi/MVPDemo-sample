@@ -8,7 +8,8 @@ import java.io.File;
 import okhttp3.Cache;
 
 /**
- * Created by hpw on 16/11/2.
+ * Created by 童思伟 on 2017/12/11.
+ *
  */
 public class HttpCache {
 

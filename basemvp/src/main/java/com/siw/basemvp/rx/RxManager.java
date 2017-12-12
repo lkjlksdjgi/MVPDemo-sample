@@ -10,7 +10,7 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * 用于管理RxBus的事件和Rxjava相关代码的生命周期处理
- * Created by hpw on 16/10/27.
+ * Created by 童思伟 on 2017/12/11.
  */
 
 public class RxManager {

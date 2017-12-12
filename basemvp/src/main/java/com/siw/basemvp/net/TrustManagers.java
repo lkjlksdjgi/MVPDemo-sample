@@ -37,7 +37,8 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * Created by hpw on 16/11/2.
+ * Created by 童思伟 on 2017/12/11.
+ *
  */
 
 public class TrustManagers {
