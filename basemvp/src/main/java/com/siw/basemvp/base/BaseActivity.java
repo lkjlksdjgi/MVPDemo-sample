@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.siw.basemvp.R;
 import com.siw.basemvp.utils.AppManager;
 import com.siw.basemvp.utils.CommonUtils;
 import com.siw.basemvp.utils.ReflexUtil;
+import com.siw.basemvp.utils.StatusBarUtil;
 
 
 /**

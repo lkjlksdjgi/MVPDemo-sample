@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.siw.basemvp.base.BaseActivity;
+import com.siw.basemvp.utils.StatusBarUtil;
 import com.siw.mvpdemo.main.Presenter.MainPresenter;
 import com.siw.mvpdemo.main.View.MainView;
 import com.siw.mvpdemo.main.model.MainModel;
@@ -21,6 +22,7 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
 
     @Override
     public void initView() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorAccent));
         tv = (TextView) findViewById(R.id.tv);
         mPresenter.getMainDatas(10,1);
     }
