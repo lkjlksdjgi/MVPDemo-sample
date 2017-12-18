@@ -3,6 +3,7 @@ package com.siw.mvpdemo.main.Presenter;
 import com.siw.basemvp.base.BasePresenter;
 import com.siw.mvpdemo.main.View.MainView;
 import com.siw.mvpdemo.main.model.MainModel;
+import com.siw.mvpdemo.main.model.bean.MainClickBean;
 import com.siw.mvpdemo.main.model.bean.MainModelBean;
 
 import rx.functions.Action1;
@@ -18,6 +19,15 @@ public class MainPresenter extends BasePresenter<MainModel,MainView> {
             @Override
             public void call(MainModelBean mainModelBean) {
                 getView().showDatas(mainModelBean);
+            }
+        }));
+    }
+
+    public void getMainClickList(String transMessage){
+        mRxManager.add(mModel.getMainClickList(transMessage).subscribe(new Action1<MainClickBean>() {
+            @Override
+            public void call(MainClickBean mainClickBean) {
+                getView().showMainClickList(mainClickBean);
             }
         }));
     }
