@@ -1,11 +1,13 @@
 package com.siw.basemvp.rx;
 
 
-import rx.Observable;
-import rx.Observable.Transformer;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import org.reactivestreams.Subscriber;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -20,16 +22,13 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-    public static <T> Transformer<T, T> rxSchedulerHelper() {    //compose简化线程
-        return new Transformer<T,T>(){
+    public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {    //compose简化线程
+        return new ObservableTransformer<T,T>(){
             @Override
-            public Observable<T> call(Observable<T> observable) {
-                return observable.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
+            public ObservableSource<T> apply(io.reactivex.Observable<T> upstream) {
+                return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
             }
         };
-//        return observable -> observable.subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread());
     }
 
     /**
@@ -51,23 +50,23 @@ public class RxUtil {
 //        });
 //    }
 
-    /**
-     * 生成Observable
-     *
-     * @param <T>
-     * @return
-     */
-    public static <T> Observable<T> createData(final T t) {
-        return Observable.create(new Observable.OnSubscribe<T>() {
-            @Override
-            public void call(Subscriber<? super T> subscriber) {
-                try {
-                    subscriber.onNext(t);
-                    subscriber.onCompleted();
-                } catch (Exception e) {
-                    subscriber.onError(e);
-                }
-            }
-        });
-    }
+//    /**
+//     * 生成Observable
+//     *
+//     * @param <T>
+//     * @return
+//     */
+//    public static <T> Observable<T> createData(final T t) {
+//        return Observable.create(new Observable.OnSubscribe<T>() {
+//            @Override
+//            public void call(Subscriber<? super T> subscriber) {
+//                try {
+//                    subscriber.onNext(t);
+//                    subscriber.onCompleted();
+//                } catch (Exception e) {
+//                    subscriber.onError(e);
+//                }
+//            }
+//        });
+//    }
 }

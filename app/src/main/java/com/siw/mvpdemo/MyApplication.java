@@ -14,4 +14,10 @@ public class MyApplication extends Application {
         super.onCreate();
         CommonUtils.init(this);
     }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+    }
 }
+

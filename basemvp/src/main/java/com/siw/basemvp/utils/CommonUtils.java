@@ -12,12 +12,16 @@ import android.util.Log;
  */
 
 public class CommonUtils {
+
     private static Context mContext;
 
     public static void init(Context context){
         mContext = context;
     }
 
+    public static void clear(){
+        mContext = null;
+    }
     public static Context getContext(){
         if(mContext == null){
             throw new NullPointerException("mContext is null,Please initialize the mContext first");

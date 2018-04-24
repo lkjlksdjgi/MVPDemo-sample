@@ -24,14 +24,13 @@ task clean(type: Delete) {
 
 ext{
     //    Retrofit okhttp网络请求
-    retrofitVersion = '2.0.1'
-    okhttploggingVersion = '3.2.0'
-    okhttpVersion = '3.2.0'
+    retrofitVersion = '2.4.0'
+    okhttpVersion = '3.10.0'
+
 
     //rxjava 相关
-    rxjavaVersion = '1.1.2'
-    rxandroidVersion = '1.1.0'
-    rxbindingVersion = '0.2.0'
+    rxjavaVersion = '2.1.12'
+    rxandroidVersion = '2.0.2'
 
     // Glide图片加载
     glideVersion = '3.6.1'

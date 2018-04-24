@@ -3,21 +3,18 @@ package com.siw.basemvp.base;
 
 import com.siw.basemvp.rx.RxManager;
 
-import java.lang.ref.WeakReference;
+import java.lang.ref.SoftReference;
 
-/**
- * Created by 童思伟 on 2017/12/11.
- */
 
 public abstract class BasePresenter<M,V> {
 
     protected M mModel;
-    protected WeakReference<V> mViewRef;
+    protected SoftReference<V> mViewRef;
 
     public RxManager mRxManager = new RxManager();
 
     public void attachVM(V v, M m) {
-        this.mViewRef = new WeakReference<V>(v);
+        this.mViewRef = new SoftReference<V>(v);
         this.mModel = m;
     }
 

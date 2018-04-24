@@ -2,10 +2,6 @@ package com.siw.mvpdemo.main.model.bean;
 
 import java.util.List;
 
-/**
- * Created by 童思伟 on 2017/12/18.
- */
-
 public class MainClickBean {
 
     /**

@@ -2,10 +2,6 @@ package com.siw.mvpdemo.main.model.bean;
 
 import java.util.List;
 
-/**
- * Created by 童思伟 on 2017/12/11.
- */
-
 public class MainModelBean {
 
     /**
@@ -30,6 +26,14 @@ public class MainModelBean {
 
     public void setResults(List<ResultsBean> results) {
         this.results = results;
+    }
+
+    @Override
+    public String toString() {
+        return "MainModelBean{" +
+                "error=" + error +
+                ", results=" + results +
+                '}';
     }
 
     public static class ResultsBean {
@@ -135,6 +139,22 @@ public class MainModelBean {
 
         public void setImages(List<String> images) {
             this.images = images;
+        }
+
+        @Override
+        public String toString() {
+            return "ResultsBean{" +
+                    "_id='" + _id + '\'' +
+                    ", createdAt='" + createdAt + '\'' +
+                    ", desc='" + desc + '\'' +
+                    ", publishedAt='" + publishedAt + '\'' +
+                    ", source='" + source + '\'' +
+                    ", type='" + type + '\'' +
+                    ", url='" + url + '\'' +
+                    ", used=" + used +
+                    ", who='" + who + '\'' +
+                    ", images=" + images +
+                    '}';
         }
     }
 }

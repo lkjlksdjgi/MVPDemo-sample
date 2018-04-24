@@ -6,27 +6,26 @@ import com.siw.mvpdemo.main.model.MainModel;
 import com.siw.mvpdemo.main.model.bean.MainClickBean;
 import com.siw.mvpdemo.main.model.bean.MainModelBean;
 
-import rx.functions.Action1;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
-/**
- * Created by 童思伟 on 2017/12/12.
- */
 
-public class MainPresenter extends BasePresenter<MainModel,MainView> {
+public class MainPresenter extends BasePresenter<MainModel, MainView> {
 
-    public void getMainDatas(int count, int pager){
-        mRxManager.add(mModel.getMainDataList(count,pager).subscribe(new Action1<MainModelBean>() {
+    public void getMainDatas(int count, int pager) {
+        Disposable subscribe = mModel.getMainDataList(count, pager).subscribe(new Consumer<MainModelBean>() {
             @Override
-            public void call(MainModelBean mainModelBean) {
+            public void accept(MainModelBean mainModelBean) throws Exception {
                 getView().showDatas(mainModelBean);
             }
-        }));
+        });
+        mRxManager.add(subscribe);
     }
 
-    public void getMainClickList(String transMessage){
-        mRxManager.add(mModel.getMainClickList(transMessage).subscribe(new Action1<MainClickBean>() {
+    public void getMainClickList(String transMessage) {
+        mRxManager.add(mModel.getMainClickList(transMessage).subscribe(new Consumer<MainClickBean>() {
             @Override
-            public void call(MainClickBean mainClickBean) {
+            public void accept(MainClickBean mainClickBean) throws Exception {
                 getView().showMainClickList(mainClickBean);
             }
         }));

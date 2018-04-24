@@ -4,10 +4,10 @@ package com.siw.mvpdemo.main;
 import com.siw.mvpdemo.main.model.bean.MainClickBean;
 import com.siw.mvpdemo.main.model.bean.MainModelBean;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by 童思伟 on 2017/12/11.
