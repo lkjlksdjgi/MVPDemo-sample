@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
+import com.siw.basemvp.net.RxService;
+
 import java.util.Stack;
 
 /**
@@ -12,12 +14,8 @@ import java.util.Stack;
  */
 
 public class AppManager {
-    private static Stack<Activity> activityStack;
-
-    private static class AppManagerModel {
-        private static final AppManager instance = new AppManager();
-    }
-
+    private Stack<Activity> activityStack;
+    private static AppManager instance = null;
     private AppManager() {
     }
 
@@ -25,7 +23,14 @@ public class AppManager {
      * 单一实例
      */
     public static AppManager getAppManager() {
-        return AppManagerModel.instance;
+        if(instance == null){
+            synchronized (AppManager.class){
+                if(instance == null){
+                    instance = new AppManager();
+                }
+            }
+        }
+        return instance;
     }
 
     /**
@@ -62,6 +67,11 @@ public class AppManager {
             activityStack.remove(activity);
             activity.finish();
             activity = null;
+            if(activityStack.size() == 0){
+                activityStack = null;
+                instance = null;
+                RxService.clear();
+            }
         }
     }
 
@@ -86,6 +96,10 @@ public class AppManager {
             }
         }
         activityStack.clear();
+        activityStack = null;
+        instance = null;
+        //退出应用的时候清除相关资源
+        RxService.clear();
     }
 
     /**

@@ -12,8 +12,7 @@ import io.reactivex.Observable;
 
 public class MainModel implements BaseModel {
     public Observable<MainModelBean> getMainDataList(int count, int pager) {
-        Observable<MainModelBean> compose = RxService.createApi(GankApi.class).getMainDataList(count, pager).compose(RxUtil.<MainModelBean>rxSchedulerHelper());
-        return compose;
+        return RxService.createApi(GankApi.class).getMainDataList(count, pager).compose(RxUtil.<MainModelBean>rxSchedulerHelper());
     }
 
     public Observable<MainClickBean> getMainClickList(String transMessage){

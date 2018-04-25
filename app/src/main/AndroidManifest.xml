@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".other.OtherActivity"></activity>
+        <activity android:name=".other.OtherActivity" />
+        <activity android:name=".MainTwoActivity"></activity>
     </application>
 
 </manifest>

@@ -1,12 +1,13 @@
 package com.siw.basemvp.base;
 
 
+import com.siw.basemvp.net.CallBackListener;
 import com.siw.basemvp.rx.RxManager;
 
 import java.lang.ref.SoftReference;
 
 
-public abstract class BasePresenter<M,V> {
+public abstract class BasePresenter<M, V> {
 
     protected M mModel;
     protected SoftReference<V> mViewRef;
@@ -19,16 +20,17 @@ public abstract class BasePresenter<M,V> {
     }
 
     public void detachVM() {
-        mRxManager.clear();
-        mModel = null;
-        if(mViewRef != null){
+        if (mRxManager != null) {
+            mRxManager.clear();
+            mRxManager = null;
+        }
+        if (mViewRef != null) {
             mViewRef.clear();
             mViewRef = null;
         }
     }
 
-    protected V getView(){
+    protected V getView() {
         return mViewRef.get();
     }
-
 }

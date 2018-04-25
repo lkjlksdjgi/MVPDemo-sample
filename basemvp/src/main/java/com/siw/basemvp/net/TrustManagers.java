@@ -50,7 +50,7 @@ public class TrustManagers {
      * @param password  The certificate's password.
      * @return SSLParams
      */
-    public static SSLSocketFactory getSafeOkHttpClient(Context context, @RawRes int bksFileId, String password, String alias) {
+    public SSLSocketFactory getSafeOkHttpClient(Context context, @RawRes int bksFileId, String password, String alias) {
         if (context == null) {
             throw new NullPointerException("context == null");
         }
@@ -95,8 +95,7 @@ public class TrustManagers {
     /**
      * 不做证书校验，信任所有证书
      */
-    public static SSLSocketFactory getUnsafeOkHttpClient() {
-
+    public SSLSocketFactory getUnsafeOkHttpClient() {
         try {
             // Create a trust manager that does not validate certificate chains
             final X509TrustManager[] trustAllCerts = new X509TrustManager[]{new X509TrustManager() {
@@ -125,8 +124,6 @@ public class TrustManagers {
             // Create an ssl socket factory with our all-trusting manager
             final SSLSocketFactory sslSocketFactory = sslContext
                     .getSocketFactory();
-
-
             return sslSocketFactory;
         } catch (Exception e) {
             throw new RuntimeException(e);
