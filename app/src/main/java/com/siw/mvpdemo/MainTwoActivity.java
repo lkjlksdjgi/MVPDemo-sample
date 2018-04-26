@@ -9,8 +9,12 @@ import android.widget.Button;
 
 import com.siw.basemvp.rx.RxTools;
 import com.siw.basemvp.rx.RxUtil;
+import com.siw.basemvp.utils.GsonUtil;
 import com.siw.mvpdemo.main.model.bean.MainModelBean;
 import com.siw.mvpdemo.main.model.bean.MainTwoBena;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainTwoActivity extends AppCompatActivity {
 
@@ -45,6 +49,14 @@ public class MainTwoActivity extends AppCompatActivity {
     }
 
     public void click(final View view){
-        rxToolsBuilder.clear();
+        List<MainTwoBena> list = new ArrayList<MainTwoBena>();
+        list.add(new MainTwoBena("张三", 12));
+        list.add(new MainTwoBena("李四", 15));
+        list.add(new MainTwoBena("王五", 16));
+        String s = GsonUtil.GsonString(list);
+        List<MainTwoBena> mainTwoBenas = GsonUtil.GsonToList(s, MainTwoBena[].class);
+        Log.e("Man",mainTwoBenas.toString());
+//        rxToolsBuilder.clear();
     }
+
 }

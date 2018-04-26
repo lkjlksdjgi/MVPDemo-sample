@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.siw.basemvp.net.CallBackListener;
+import com.siw.basemvp.utils.GsonUtil;
 import com.siw.basemvp.utils.ReflexUtil;
 
 import java.lang.reflect.Type;
@@ -55,7 +56,6 @@ public class RxManager<T> {
             @Override
             public void accept(Disposable disposable) throws Exception {
                 callBackListener.onPre(true);
-                Log.e("Man", "onPre");
             }
         });
         compositeDisposable.add(disposable);
@@ -74,8 +74,8 @@ public class RxManager<T> {
             @Override
             public void accept(T t) throws Exception {
                 Gson gson = new Gson();
-                T t2 = gson.fromJson(gson.toJson(t).toString(), cla);
-                callBackListener.onSuccess(t2);
+                T t1 = GsonUtil.GsonToBean(gson.toJson(t).toString(), cla);
+                callBackListener.onSuccess(t1);
             }
         }, new Consumer<Throwable>() {
             @Override
@@ -90,7 +90,6 @@ public class RxManager<T> {
             @Override
             public void accept(Disposable disposable) throws Exception {
                 callBackListener.onPre(true);
-                Log.e("Man", "onPre");
             }
         });
         compositeDisposable.add(disposable);
