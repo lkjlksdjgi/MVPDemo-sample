@@ -1,6 +1,8 @@
 package com.siw.mvpdemo.main;
 
 
+import com.siw.basemvp.rx.BaseResponse;
+import com.siw.mvpdemo.main.model.bean.Body;
 import com.siw.mvpdemo.main.model.bean.MainClickBean;
 import com.siw.mvpdemo.main.model.bean.MainModelBean;
 
@@ -16,8 +18,8 @@ import retrofit2.http.Query;
 public interface GankApi {
 
     @GET("data/Android/{count}/{pager}")
-    Observable<MainModelBean> getMainDataList(@Path("count") int count, @Path("pager") int pager);
+    Observable<MainModelBean> getMainDataLists(@Path("count") int count, @Path("pager") int pager);
 
     @GET("serv.do?encry=0")
-    Observable<MainClickBean> getMainClickList(@Query("transMessage") String transMessage);
+    Observable<BaseResponse<Body>> getMainClickList(@Query("transMessage") String transMessage);
 }

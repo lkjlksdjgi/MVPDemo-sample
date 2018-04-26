@@ -1,8 +1,15 @@
 package com.siw.basemvp.rx;
 
 
-import com.siw.basemvp.net.CallBackListener;
+import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import com.siw.basemvp.net.CallBackListener;
+import com.siw.basemvp.utils.ReflexUtil;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
@@ -26,7 +33,6 @@ public class RxManager<T> {
     }
 
     /**
-     *
      * @param observable
      * @param callBackListener
      */
@@ -49,12 +55,47 @@ public class RxManager<T> {
             @Override
             public void accept(Disposable disposable) throws Exception {
                 callBackListener.onPre(true);
+                Log.e("Man", "onPre");
             }
         });
         compositeDisposable.add(disposable);
         listCallBack.add(callBackListener);
     }
 
+    /**
+     * 加一个Class<T> cla 参数，
+     * 主要是为了解决 Retrofit 泛型解析遇到com.google.gson.internal.LinkedTreeMap cannot be cast to object的bug
+     * @param observable
+     * @param cla
+     * @param callBackListener
+     */
+    public void add(Observable<T> observable, final Class<T> cla , final CallBackListener<T> callBackListener) {
+        Disposable disposable = observable.compose(RxUtil.<T>rxSchedulerHelper()).subscribe(new Consumer<T>() {
+            @Override
+            public void accept(T t) throws Exception {
+                Gson gson = new Gson();
+                T t2 = gson.fromJson(gson.toJson(t).toString(), cla);
+                callBackListener.onSuccess(t2);
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                callBackListener.onError(throwable.toString());
+            }
+        }, new Action() {
+            @Override
+            public void run() throws Exception {
+            }
+        }, new Consumer<Disposable>() {
+            @Override
+            public void accept(Disposable disposable) throws Exception {
+                callBackListener.onPre(true);
+                Log.e("Man", "onPre");
+            }
+        });
+        compositeDisposable.add(disposable);
+        listCallBack.add(callBackListener);
+    }
 
 
     public void clear() {
