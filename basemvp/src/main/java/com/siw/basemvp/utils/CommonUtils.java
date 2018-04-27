@@ -1,32 +1,36 @@
 package com.siw.basemvp.utils;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-/**
- * Created by 童思伟 on 2017/12/11.
- *
- */
-
 public class CommonUtils {
 
-    private static Context mContext;
+    private static Application mApplication;
 
-    public static void init(Context context){
-        mContext = context;
+    public static void init(Application application) {
+        mApplication = application;
     }
 
-    public static void clear(){
-        mContext = null;
+    public static void clear() {
+        mApplication = null;
     }
-    public static Context getContext(){
-        if(mContext == null){
-            throw new NullPointerException("mContext is null,Please initialize the mContext first");
+
+    public static Application getApplication() {
+        if (mApplication == null) {
+            throw new NullPointerException("mApplication is null,Please initialize the mApplication first");
         }
-        return mContext;
+        return mApplication;
+    }
+
+    public static Context getContext() {
+        if (mApplication == null) {
+            throw new NullPointerException("mApplication is null,Please initialize the mApplication first");
+        }
+        return mApplication.getApplicationContext();
     }
 
     /**

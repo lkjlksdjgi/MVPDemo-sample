@@ -5,12 +5,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siw.basemvp.base.BaseActivity;
+import com.siw.basemvp.utils.fileutils.FileIoUtils;
+import com.siw.basemvp.utils.fileutils.FilePathUtils;
 import com.siw.basemvp.utils.StatusBarUtil;
 import com.siw.mvpdemo.main.Presenter.MainPresenter;
 import com.siw.mvpdemo.main.View.MainView;
 import com.siw.mvpdemo.main.model.MainModel;
 import com.siw.mvpdemo.main.model.bean.Body;
-import com.siw.mvpdemo.main.model.bean.MainClickBean;
 import com.siw.mvpdemo.main.model.bean.MainModelBean;
 
 public class MainActivity extends BaseActivity<MainPresenter, MainModel> implements MainView {
@@ -51,6 +52,5 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     public void gotoActivity(View view) {
         startActivity(new Intent(this, MainTwoActivity.class));
         finish();
-
     }
 }
