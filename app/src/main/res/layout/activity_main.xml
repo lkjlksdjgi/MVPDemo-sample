@@ -17,7 +17,12 @@
     <Button
         android:onClick="gotoActivity"
         android:text="跳转到另一个Activity"
+        android:id="@+id/ddd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+    <Button
+        android:onClick="login"
+        android:text="登录了吗"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

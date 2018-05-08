@@ -58,6 +58,11 @@ public class RxUtil {
         };
     }
 
+    /**
+     * 返回结果统一处理
+     * @param <T>
+     * @return
+     */
     public static <T> Function<BaseResponse<T>,ObservableSource<T>> getUnifiedResult() {
         Function<BaseResponse<T>, ObservableSource<T>> function = new Function<BaseResponse<T>, ObservableSource<T>>() {
             @Override

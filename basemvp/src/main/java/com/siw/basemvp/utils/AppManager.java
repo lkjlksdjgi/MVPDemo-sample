@@ -2,7 +2,9 @@ package com.siw.basemvp.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Fragment;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 
 import com.siw.basemvp.net.RxService;
 
@@ -14,7 +16,7 @@ import java.util.Stack;
  */
 
 public class AppManager {
-    private Stack<Activity> activityStack;
+    private Stack<FragmentActivity> activityStack;
     private static AppManager instance = null;
     private AppManager() {
     }
@@ -36,9 +38,9 @@ public class AppManager {
     /**
      * 添加Activity到堆栈
      */
-    public void addActivity(Activity activity) {
+    public void addActivity(FragmentActivity activity) {
         if (activityStack == null) {
-            activityStack = new Stack<Activity>();
+            activityStack = new Stack<FragmentActivity>();
         }
         activityStack.add(activity);
     }
@@ -46,8 +48,8 @@ public class AppManager {
     /**
      * 获取当前Activity（堆栈中最后一个压入的）
      */
-    public Activity currentActivity() {
-        Activity activity = activityStack.lastElement();
+    public FragmentActivity currentActivity() {
+        FragmentActivity activity = activityStack.lastElement();
         return activity;
     }
 
@@ -55,14 +57,14 @@ public class AppManager {
      * 结束当前Activity（堆栈中最后一个压入的）
      */
     public void finishActivity() {
-        Activity activity = activityStack.lastElement();
+        FragmentActivity activity = activityStack.lastElement();
         finishActivity(activity);
     }
 
     /**
      * 结束指定的Activity
      */
-    public void finishActivity(Activity activity) {
+    public void finishActivity(FragmentActivity activity) {
         if (activity != null) {
             activityStack.remove(activity);
             activity.finish();
@@ -79,7 +81,7 @@ public class AppManager {
      * 结束指定类名的Activity
      */
     public void finishActivity(Class<?> cls) {
-        for (Activity activity : activityStack) {
+        for (FragmentActivity activity : activityStack) {
             if (activity.getClass().equals(cls)) {
                 finishActivity(activity);
             }

@@ -63,7 +63,7 @@ public class RxManager<T> {
     }
 
     /**
-     * 加一个Class<T> cla 参数，
+     * 加一个Class<T> cla 参数，统一处理服务器返回结果时，gson解析会有一个bug。
      * 主要是为了解决 Retrofit 泛型解析遇到com.google.gson.internal.LinkedTreeMap cannot be cast to object的bug
      * @param observable
      * @param cla
