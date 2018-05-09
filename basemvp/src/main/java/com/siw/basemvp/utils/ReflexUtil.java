@@ -3,10 +3,8 @@ package com.siw.basemvp.utils;
 import java.lang.reflect.ParameterizedType;
 
 /**
- * Created by 童思伟 on 2017/12/11.
- *
+ * 反射工具类
  */
-
 public class ReflexUtil {
     public static <T> T getClazz(Object o, int i) {
         try {

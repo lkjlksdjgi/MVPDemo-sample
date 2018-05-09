@@ -4,9 +4,7 @@ package com.siw.basemvp.utils.aop;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.siw.basemvp.base.BaseActivity;
-import com.siw.basemvp.utils.AppManager;
-import com.siw.basemvp.utils.persissionutils.PermissionUtils;
+import com.siw.basemvp.utils.PermissionUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -145,21 +143,8 @@ public class AspectUtils {
     public void aroundPermissionJoinPoint(final ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         final Permission permission = methodSignature.getMethod().getAnnotation(Permission.class);
-        final BaseActivity ac = (BaseActivity) AppManager.getAppManager().currentActivity();
-        PermissionUtils.requestPermissions(ac, 1, permission.value(), new PermissionUtils.OnPermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-                try {
-                    joinPoint.proceed();//获得权限，执行原方法
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onPermissionDenied() {
-
-            }
-        });
+        if(PermissionUtils.requestPermissions(permission.requestCode(), permission.value())){
+            joinPoint.proceed();//有权限，执行原方法
+        }
     }
 }

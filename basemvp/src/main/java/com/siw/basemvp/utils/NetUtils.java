@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+/**
+ * 网络状态工具类
+ */
 public class NetUtils {
 
     private NetUtils() {

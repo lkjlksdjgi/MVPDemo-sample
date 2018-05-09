@@ -1,6 +1,7 @@
 package com.siw.mvpdemo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -55,37 +56,25 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
 
     @SingleClick(intervalTime = 3000)
     public void gotoActivity(View view) {
-//        startActivity(new Intent(this, MainTwoActivity.class));
-//        finish();
+        startActivity(new Intent(this, MainTwoActivity.class));
+        finish();
         count = count + 1;
         Log.e("Man", "count :" + count);
     }
 
 
     public void login(View view) {
-
         lala();
-
     }
 
 
     @Permission(value = {Manifest.permission.READ_CALENDAR, Manifest.permission.WRITE_CALENDAR})
     private void lala() {
         Log.e("Man", "Thread :" + Thread.currentThread().getName());
-//        startActivityForResult(
-//                new Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//                        .putExtra(MediaStore.EXTRA_OUTPUT,
-//                                Uri.fromFile(new File(getExternalCacheDir() + "user_photo.png"))),
-//                1);
-
-//        int checkSelfPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-//        if(checkSelfPermission == PackageManager.PERMISSION_DENIED){//无权限
-//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-//        }
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        Toast.makeText(this, permissions.toString(), Toast.LENGTH_SHORT);
-    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+//        Toast.makeText(this, permissions.toString(), Toast.LENGTH_SHORT);
+//    }
 }

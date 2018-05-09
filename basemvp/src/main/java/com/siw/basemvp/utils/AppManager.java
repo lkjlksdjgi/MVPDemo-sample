@@ -1,8 +1,6 @@
 package com.siw.basemvp.utils;
 
-import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.Fragment;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
@@ -10,11 +8,10 @@ import com.siw.basemvp.net.RxService;
 
 import java.util.Stack;
 
-/**
- * Created by 童思伟 on 2017/12/11.
- *
- */
 
+/**
+ * 管理Activity的工具类
+ */
 public class AppManager {
     private Stack<FragmentActivity> activityStack;
     private static AppManager instance = null;

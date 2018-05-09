@@ -2,10 +2,7 @@ package com.siw.basemvp.utils;
 
 import android.util.Log;
 
-/**
- * Created by 童思伟 on 2017/12/11.
- *
- */
+
 
 public class LogUtil {
     private static boolean isDebug = true;
