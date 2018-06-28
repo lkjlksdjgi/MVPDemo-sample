@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.siw.mvpdemo.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title="彩色状态栏 + 彩色导航栏"
+        app:titleTextColor="@android:color/white" />
+
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         android:onClick="click"
-         />
+        android:text="Hello World!" />
 
     <Button
-        android:onClick="gotoActivity"
-        android:text="跳转到另一个Activity"
         android:id="@+id/ddd"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="gotoActivity"
+        android:text="跳转到另一个Activity" />
+
     <Button
-        android:onClick="login"
-        android:text="登录了吗"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="login"
+        android:text="登录了吗" />
 </LinearLayout>

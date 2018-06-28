@@ -13,6 +13,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CommonUtils.init(this);
+
     }
 
     @Override

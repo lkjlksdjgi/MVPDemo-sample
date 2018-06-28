@@ -5,12 +5,10 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.siw.basemvp.base.BaseActivity;
 import com.siw.basemvp.utils.aop.Permission;
 import com.siw.basemvp.utils.aop.SingleClick;
-import com.siw.basemvp.utils.StatusBarUtil;
 import com.siw.mvpdemo.main.Presenter.MainPresenter;
 import com.siw.mvpdemo.main.View.MainView;
 import com.siw.mvpdemo.main.model.MainModel;
@@ -27,8 +25,13 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     }
 
     @Override
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+        mImmersionBar.titleBar(R.id.toolbar).init();
+    }
+    @Override
     public void initView() {
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorAccent));
+        mImmersionBar.statusBarColor(R.color.colorAccent).init();
         tv = (TextView) findViewById(R.id.tv);
         mPresenter.getMainDatas(10, 1);
     }

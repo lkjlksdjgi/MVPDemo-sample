@@ -22,7 +22,7 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     protected M mModel;
     protected Activity mActivity;
     protected Context mContext;
-    public View view;
+    protected View view;
 
     @Override
     public void onAttach(Context context) {
@@ -35,7 +35,7 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view == null){
-            view = inflater.inflate(getLayoutId(), null);
+            view = getFragmentView(inflater,container,savedInstanceState);
         }
         return view;
     }
@@ -59,10 +59,10 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
         }
     }
     /**
-     * 获取view的id
+     * 获取view
      * @return
      */
-    public abstract int getLayoutId();
+    public abstract View getFragmentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
     /**
      * 初始化控件
      */

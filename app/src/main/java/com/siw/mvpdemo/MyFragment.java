@@ -21,7 +21,6 @@ public class MyFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = View.inflate(getActivity(), R.layout.fragments, null);
-
         //两个
         view.findViewById(R.id.ddd).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +28,6 @@ public class MyFragment extends Fragment{
                 lala();
             }
         });
-
         //一个
         view.findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,8 +35,6 @@ public class MyFragment extends Fragment{
                 lalas();
             }
         });
-
-
         return view;
     }
 

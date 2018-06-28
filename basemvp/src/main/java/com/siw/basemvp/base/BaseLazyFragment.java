@@ -2,10 +2,11 @@ package com.siw.basemvp.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 /**
- * Created by 童思伟 on 2017/12/11.
- *
  * fragment 懒加载
  */
 
@@ -16,9 +17,10 @@ public abstract class BaseLazyFragment<P extends BasePresenter, M extends BaseMo
     private boolean mInited = true;
     private boolean mIsHidden;
 
+    @Nullable
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         mSavedInstanceState = savedInstanceState;
         if (savedInstanceState == null) {
             if (!isHidden()) {
@@ -31,6 +33,16 @@ public abstract class BaseLazyFragment<P extends BasePresenter, M extends BaseMo
                 mInited = true;
                 initLazyView(savedInstanceState);
             }
+        }
+        return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (!mInited && !isVisibleToUser) {
+            mInited = true;
+            initLazyView(mSavedInstanceState);
         }
     }
 
@@ -53,4 +65,6 @@ public abstract class BaseLazyFragment<P extends BasePresenter, M extends BaseMo
      * 懒加载
      */
     protected abstract void initLazyView(@Nullable Bundle savedInstanceState);
+
+
 }

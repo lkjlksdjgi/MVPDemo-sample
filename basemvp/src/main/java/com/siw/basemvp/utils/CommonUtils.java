@@ -4,8 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.support.v7.widget.RecyclerView;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.View;
 
 public class CommonUtils {
 
@@ -47,7 +49,6 @@ public class CommonUtils {
                 return "";
             }
         } catch (Exception e) {
-            Log.e("VersionInfo", "Exception", e);
         }
         return versionName;
     }
@@ -73,4 +74,29 @@ public class CommonUtils {
         return tm.getDeviceId();
     }
 
+    public static int getRecycleViewHeight(RecyclerView mRecyclerView) {
+        RecyclerView.Adapter myAdapter = mRecyclerView.getAdapter();
+        int height = 0;
+        if (myAdapter != null) {
+            int size = myAdapter.getItemCount();
+            for (int i = 0; i < size; i++) {
+                RecyclerView.ViewHolder holder = myAdapter.createViewHolder(mRecyclerView, myAdapter.getItemViewType(i));
+                myAdapter.onBindViewHolder(holder, i);
+                holder.itemView.measure(
+                        View.MeasureSpec.makeMeasureSpec(mRecyclerView.getWidth(), View.MeasureSpec.EXACTLY),
+                        View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+                holder.itemView.layout(0, 0, holder.itemView.getMeasuredWidth(),
+                        holder.itemView.getMeasuredHeight());
+                RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
+                if (layoutParams == null) {
+                    height += holder.itemView.getMeasuredHeight();
+                } else {
+                    int itemMarginTop = layoutParams.topMargin;
+                    int itemMarginBottom = layoutParams.bottomMargin;
+                    height += holder.itemView.getMeasuredHeight() + itemMarginTop + itemMarginBottom;
+                }
+            }
+        }
+        return height;
+    }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -16,4 +17,13 @@
         android:text="WRITE_CALENDAR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <com.siw.mvpdemo.RippleView
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="发顺丰是打"
+        >
+
+    </com.siw.mvpdemo.RippleView>
 </LinearLayout>
